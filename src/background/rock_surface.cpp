@@ -4,8 +4,7 @@
   @file rock_surface.hpp
   @brief upper/lower rock surface
 */
-#include <LovyanGFX.hpp>
-
+#include "../lgfx.hpp"
 #include "rock_surface.hpp"
 #include "../debug.hpp"
 #include "../app.hpp"
@@ -14,8 +13,7 @@
 #include "../constants.hpp"
 
 #include <lgfx/gob_lgfx_sprite.hpp>
-using goblib::lgfx::GSprite;
-using goblib::lgfx::GSprite4;
+using goblib::lgfx::LGFX_Sprite4;
 #include <lgfx/gob_lgfx_animated_palette.hpp>
 using goblib::lgfx::AnimatedPalette;
 #include <gob_utility.hpp>
@@ -39,7 +37,7 @@ RockSurfaceUpper:: RockSurfaceUpper(std::int32_t left, std::int32_t top)
         , _apalette(nullptr)
         , _velocity(VELOCITY_TABLE[Velocity::Normal])
 {
-    _sprite = new goblib::lgfx::GSprite4();
+    _sprite = new goblib::lgfx::LGFX_Sprite4();
     assert(_sprite);
     _apalette = new AnimatedPalette(16, _sprite);
     assert(_apalette);
@@ -101,7 +99,7 @@ void RockSurfaceUpper::onExecute(const float delta)
 void RockSurfaceUpper::render(void* arg)
 {
     RenderArg* rarg = static_cast<RenderArg*>(arg);
-    GSprite* target = rarg->sprite;
+    LGFX_Sprite* target = rarg->sprite;
     std::int32_t left = -(static_cast<std::int32_t>(x()) % RENDER_WIDTH);
     std::int32_t yy = static_cast<std::int32_t>(y());
 
@@ -123,7 +121,7 @@ RockSurfaceLower:: RockSurfaceLower(std::int32_t left, std::int32_t top)
 
 bool RockSurfaceLower::onInitialize()
 {
-    goblib::lgfx::GSprite4 tmp;
+    goblib::lgfx::LGFX_Sprite4 tmp;
 
     if(createFromBitmap(tmp, BITMAP_PATH))
     {

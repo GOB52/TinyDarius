@@ -4,7 +4,7 @@
   @file name_entry.cpp
   @brief Name entry
 */
-#include <LovyanGFX.hpp>
+#include "../lgfx.hpp"
 #include "name_entry.hpp"
 #include "../debug.hpp"
 #include "../app.hpp"
@@ -14,7 +14,6 @@
 
 #include <gob_utility.hpp>
 #include <lgfx/gob_lgfx.hpp>
-using goblib::lgfx::GSprite;
 #include <gob_m5s_faces.hpp>
 using goblib::m5s::FaceGB;
 
@@ -134,7 +133,7 @@ void NameEntry::onExecute(const float delta)
 void NameEntry::render(void* arg)
 {
     RenderArg* rarg = static_cast<RenderArg*>(arg);
-    GSprite* target = rarg->sprite;
+    LGFX_Sprite* target = rarg->sprite;
     std::int32_t xx = static_cast<std::int32_t>(x());
     std::int32_t yy = static_cast<std::int32_t>(y());
     

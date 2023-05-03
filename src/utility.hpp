@@ -10,8 +10,8 @@
 #include <lgfx/gob_lgfx.hpp>
 namespace goblib { namespace lgfx { class AnimatedPalette; }}
 
-bool createFromBitmap(goblib::lgfx::GSprite& sprite,const char* bitmap_path);
-std::size_t getPaletteColors(RGBColor* dest, std::size_t sz, goblib::lgfx::GSprite& sprite);
+bool createFromBitmap(LGFX_Sprite& sprite,const char* bitmap_path);
+std::size_t getPaletteColors(RGBColor* dest, std::size_t sz, LGFX_Sprite& sprite);
 
 /*! @brief for partial color change */
 struct ColorChange
@@ -20,7 +20,7 @@ struct ColorChange
     RGBColor toward;   
 };
 /*! apply from ColorChange.original to toward */
-void applyPaletteColors(goblib::lgfx::GSprite& sprite, const ColorChange* table, const std::size_t size);
+void applyPaletteColors(LGFX_Sprite& sprite, const ColorChange* table, const std::size_t size);
 
 /*! animated palette from ColorChange.original to toward */
 void towardPaletteColors(goblib::lgfx::AnimatedPalette& apalette, const ColorChange* table, const std::size_t size, const std::uint32_t times);

@@ -15,7 +15,7 @@
 #include <vector>
 #include <cstring>
 
-namespace goblib { namespace lgfx { class GSprite4; }}
+namespace goblib { namespace lgfx { class LGFX_Sprite4; }}
 
 /*! @brief Centering messages to be displayed one character at a time */
 class CenteringMessage : public GameObj
@@ -105,7 +105,7 @@ class BlinkingMessage : public GameObj
     virtual void onExecute(const float delta) override;
 
   private:
-    goblib::lgfx::GSprite4* _sprite;
+    goblib::lgfx::LGFX_Sprite4* _sprite;
 
     char _buffer[BUFFER_LENGTH];
     const std::uint32_t _clr;

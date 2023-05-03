@@ -11,7 +11,7 @@
 #include "../game_obj.hpp"
 
 namespace goblib { namespace lgfx {
-class GSprite4;
+class LGFX_Sprite4;
 class AnimatedPalette;
 }}
 
@@ -37,7 +37,7 @@ class RockSurfaceUpper : public GameObj
     virtual void onExecute(const float delta) override;
 
   protected:
-    goblib::lgfx::GSprite4* _sprite; // array ptr
+    goblib::lgfx::LGFX_Sprite4* _sprite; // array ptr
     goblib::lgfx::AnimatedPalette* _apalette;
     Pos2 _velocity;
 

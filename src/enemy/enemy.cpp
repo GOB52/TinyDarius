@@ -4,8 +4,7 @@
   @file enemy.cpp
   @brief Enemies and effect
 */
-#include <LovyanGFX.hpp>
-
+#include "../lgfx.hpp"
 #include "enemy.hpp"
 #include "../debug.hpp"
 #include "../app.hpp"
@@ -16,7 +15,6 @@
 #include "../behavior.hpp"
 
 #include <lgfx/gob_lgfx_sprite.hpp>
-using goblib::lgfx::GSprite;
 using goblib::lgfx::GCellSprite4;
 #include <gob_suffix.hpp>
 using goblib::suffix::operator"" _u8;
@@ -198,7 +196,7 @@ void Enemy::onExecute(const float delta)
 void Enemy::render(void* arg)
 {
     RenderArg* rarg = static_cast<RenderArg*>(arg);
-    GSprite* target = rarg->sprite;
+    LGFX_Sprite* target = rarg->sprite;
 
     _sprite->pushCellTo16(target, _animation.rect(), static_cast<std::int32_t>(x()), static_cast<std::int32_t>(y()) + rarg->yorigin, 0);
     GameObj::render(arg);

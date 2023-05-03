@@ -4,8 +4,7 @@
   @file boss.hpp
   @brief Boss base
 */
-#include <LovyanGFX.hpp>
-
+#include "../lgfx.hpp"
 #include "boss.hpp"
 #include "../debug.hpp"
 #include "../app.hpp"
@@ -21,7 +20,6 @@
 //#include "electric_fan.hpp"
 
 #include <lgfx/gob_lgfx.hpp>
-using goblib::lgfx::GSprite;
 #include <lgfx/gob_lgfx_sprite.hpp>
 using goblib::lgfx::GCellSprite4;
 #include <lgfx/gob_lgfx_animated_palette.hpp>
@@ -131,7 +129,7 @@ void Boss::onHit(GameObj* o, const Rect2& hit)
 void Boss::render(void* arg)
 {
     RenderArg* rarg = static_cast<RenderArg*>(arg);
-    GSprite* target = rarg->sprite;
+    LGFX_Sprite* target = rarg->sprite;
     _sprite->pushCellTo16(target, _bodyRect, static_cast<std::int32_t>(x()), static_cast<std::int32_t>(y()) + rarg->yorigin, 0);
 
     GameObj::render(arg);
@@ -394,7 +392,7 @@ void Boss::Partial::reflect(const Pos2& pos)
 void Boss::Partial::render(void* arg)
 {
     RenderArg* rarg = static_cast<RenderArg*>(arg);
-    GSprite* target = rarg->sprite;
+    LGFX_Sprite* target = rarg->sprite;
     _sprite.pushCellTo16(target, _animation.rect(), static_cast<std::int32_t>(x()), static_cast<std::int32_t>(y()) + rarg->yorigin, 0);
 
     GameObj::render(arg);
@@ -443,7 +441,7 @@ void Boss::Bullet::onExecute(const float delta)
 void Boss::Bullet::render(void* arg)
 {
     RenderArg* rarg = static_cast<RenderArg*>(arg);
-    GSprite* target = rarg->sprite;
+    LGFX_Sprite* target = rarg->sprite;
     _sprite.pushCellTo16(target, _animation.rect(), static_cast<std::int32_t>(x()), static_cast<std::int32_t>(y()) + rarg->yorigin, 0);
 
     GameObj::render(arg);

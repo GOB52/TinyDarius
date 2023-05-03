@@ -4,7 +4,7 @@
   @file utility.cpp
   @brief Utilities
 */
-#include <LovyanGFX.hpp>
+#include "lgfx.hpp"
 #include "utility.hpp"
 #include "app.hpp"
 #include <gob_m5s_sd.hpp>
@@ -12,7 +12,7 @@
 #include <esp_log.h>
 #include <functional>
 
-bool createFromBitmap(goblib::lgfx::GSprite& sprite,const char* bitmap_path)
+bool createFromBitmap(LGFX_Sprite& sprite,const char* bitmap_path)
 {
     SCOPED_RELEASE_BUS();
 
@@ -38,7 +38,7 @@ bool createFromBitmap(goblib::lgfx::GSprite& sprite,const char* bitmap_path)
     return true;
 }
 
-std::size_t getPaletteColors(RGBColor* dest, std::size_t sz, goblib::lgfx::GSprite& sprite)
+std::size_t getPaletteColors(RGBColor* dest, std::size_t sz, LGFX_Sprite& sprite)
 {
     auto s = sprite.getPalette();
     sz = std::min(sz, sprite.getPaletteCount());
@@ -52,7 +52,7 @@ namespace
 {
 using palclr_func = std::function< void(const int_fast8_t, const ColorChange&) >;
 
-void functionPaletteColors(goblib::lgfx::GSprite& sprite, const ColorChange* table, const std::size_t size, palclr_func func)
+void functionPaletteColors(LGFX_Sprite& sprite, const ColorChange* table, const std::size_t size, palclr_func func)
 {
     RGBColor* pal = sprite.getPalette();
     auto psz = sprite.getPaletteCount();
@@ -71,7 +71,7 @@ void functionPaletteColors(goblib::lgfx::GSprite& sprite, const ColorChange* tab
 //
 }
 
-void applyPaletteColors(goblib::lgfx::GSprite& sprite, const ColorChange* table, const std::size_t size)
+void applyPaletteColors(LGFX_Sprite& sprite, const ColorChange* table, const std::size_t size)
 {
     assert(table);
     functionPaletteColors(sprite, table, size, [&sprite](const int_fast8_t idx, const ColorChange& cc)

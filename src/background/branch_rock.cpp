@@ -4,8 +4,7 @@
   @file branch_rock.cpp
   @brief Rocks for branching that appear when cleared.
 */
-#include <LovyanGFX.hpp>
-
+#include "../lgfx.hpp"
 #include "../debug.hpp"
 #include "branch_rock.hpp"
 #include "../app.hpp"
@@ -14,8 +13,7 @@
 #include "../constants.hpp"
 
 #include <lgfx/gob_lgfx_sprite.hpp>
-using goblib::lgfx::GSprite;
-using goblib::lgfx::GSprite4;
+using goblib::lgfx::LGFX_Sprite4;
 #include <lgfx/gob_lgfx_animated_palette.hpp>
 using goblib::lgfx::AnimatedPalette;
 #include <gob_utility.hpp>
@@ -35,7 +33,7 @@ BranchRock::BranchRock()
         , _sprite(nullptr)
         , _apalette(nullptr)
 {
-    _sprite = new GSprite4();
+    _sprite = new LGFX_Sprite4();
     assert(_sprite);
     _apalette = new AnimatedPalette(16, _sprite);
     assert(_apalette);
@@ -94,7 +92,7 @@ void BranchRock::onExecute(const float delta)
 void BranchRock::render(void* arg)
 {
     RenderArg* rarg = static_cast<RenderArg*>(arg);
-    GSprite* target = rarg->sprite;
+    LGFX_Sprite* target = rarg->sprite;
     std::int16_t xx = static_cast<std::int16_t>(x());
     std::int16_t yy = static_cast<std::int16_t>(y());
 

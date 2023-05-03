@@ -13,7 +13,7 @@
 #include <lgfx/gob_lgfx.hpp>
 
 namespace goblib { namespace lgfx {
-class GSprite4;
+class LGFX_Sprite4;
 }}
 
 class SceneAdvertise : public goblib::SceneTask, public goblib::graph::RenderObj2D
@@ -34,7 +34,7 @@ class SceneAdvertise : public goblib::SceneTask, public goblib::graph::RenderObj
     virtual void onLeaveCurrentScene(SceneType cur) override;
 
   private:
-    goblib::lgfx::GSprite4* _sprite;
+    goblib::lgfx::LGFX_Sprite4* _sprite;
 };
 
 #endif

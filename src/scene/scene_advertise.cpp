@@ -14,7 +14,6 @@ using goblib::SceneTask;
 
 #include <gob_utility.hpp>
 #include <lgfx/gob_lgfx_sprite.hpp>
-using goblib::lgfx::GSprite;
 #include <gob_m5s_faces.hpp>
 using goblib::m5s::FaceGB;
 
@@ -82,7 +81,7 @@ void SceneAdvertise::onLeaveCurrentScene(SceneType cur)
 void SceneAdvertise::render(void* arg)
 {
     RenderArg* rarg = static_cast<RenderArg*>(arg);
-    GSprite* target = rarg->sprite;
+    LGFX_Sprite* target = rarg->sprite;
 
     _sprite->pushSpriteTo16(target, (SCREEN_WIDTH - _sprite->width()) / 2, 64 + rarg->yorigin, 0);
     

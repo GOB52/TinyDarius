@@ -34,6 +34,6 @@ class BlockMask : public GameObj
 
   private:
     GOBLIB_INLINE std::uint32_t step() const { return counter() >> 1; }
-    void fill(goblib::lgfx::GSprite* sprite, const std::int32_t x, const std::int32_t y, const std::uint32_t step);
+    void fill(LGFX_Sprite* sprite, const std::int32_t x, const std::int32_t y, const std::uint32_t step);
 };
 #endif

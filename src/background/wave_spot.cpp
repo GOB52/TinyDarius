@@ -4,8 +4,7 @@
   @file wave_spot.cpp
   @brief Background wave and spot
 */
-#include <LovyanGFX.hpp>
-
+#include "../lgfx.hpp"
 #include "wave_spot.hpp"
 #include "../debug.hpp"
 #include "../app.hpp"
@@ -15,8 +14,7 @@
 #include "../stage.hpp"
 
 #include <lgfx/gob_lgfx_sprite.hpp>
-using goblib::lgfx::GSprite;
-using goblib::lgfx::GSprite4;
+using goblib::lgfx::LGFX_Sprite4;
 #include <lgfx/gob_lgfx_animated_palette.hpp>
 using goblib::lgfx::AnimatedPalette;
 #include <gob_utility.hpp>
@@ -113,7 +111,7 @@ WaveSpot::WaveSpot()
         , _apalette(nullptr)
         , _opalettes()
 {
-    _sprites = new GSprite4[SpriteMax];
+    _sprites = new LGFX_Sprite4[SpriteMax];
     assert(_sprites);
     _apalette = new AnimatedPalette(16, _sprites);
     assert(_apalette);
@@ -187,7 +185,7 @@ void WaveSpot::onExecute(const float delta)
 void WaveSpot::render(void* arg)
 {
     RenderArg* rarg = static_cast<RenderArg*>(arg);
-    GSprite* target = rarg->sprite;
+    LGFX_Sprite* target = rarg->sprite;
     std::int32_t left = -(static_cast<int32_t>(x()) % WIDTH_ALL);
     std::int32_t top = static_cast<int32_t>(y()) + rarg->yorigin;
 

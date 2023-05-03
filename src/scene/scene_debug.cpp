@@ -5,8 +5,7 @@
   @brief For debug
 */
 #ifndef NDEBUG
-
-#include <LovyanGFX.hpp>
+#include "../lgfx.hpp"
 #include "scene_debug.hpp"
 #include "scene_debug_sound.hpp"
 #include "scene_game.hpp"
@@ -19,7 +18,6 @@
 #include "../math_table.hpp"
 
 #include <lgfx/gob_lgfx.hpp>
-using goblib::lgfx::GSprite;
 #include <gob_m5s_faces.hpp>
 using goblib::m5s::FaceGB;
 #include <gob_m5s_debug.hpp>
@@ -137,7 +135,7 @@ void SceneDebug::onLeaveCurrentScene(SceneType cur)
 void SceneDebug::render(void* arg)
 {
     RenderArg* rarg = static_cast<RenderArg*>(arg);
-    GSprite* sprite = rarg->sprite;
+    LGFX_Sprite* sprite = rarg->sprite;
 
     sprite->setTextColor(TFT_WHITE, TFT_BLACK);
     sprite->setCursor(16,32 + rarg->yorigin);
