@@ -46,6 +46,7 @@ static LGFX lcd;
 # else
 #   define SDU_DISPLAY_TYPE LGFX*
 #   define SDU_DISPLAY_OBJ_PTR &lcd
+#   define SDU_TouchButton LGFX_Button
 # endif
 # include <M5StackUpdater.h>
 #endif
@@ -92,7 +93,10 @@ void setup()
 
 #if defined(TD_ENABLE_SD_UPDATER)
     auto SdFatSPIConfig = SdSpiConfig( TFCARD_CS_PIN, SHARED_SPI, SD_SCK_MHZ(25) );
-    checkSDUpdater(goblib::m5s::SD::instance().sd(),String(MENU_BIN), 5000, &SdFatSPIConfig);
+# ifndef M5UNIFIED_VERSION
+    lcd.init(); // For SD-Updater
+# endif
+    checkSDUpdater(goblib::m5s::SD::instance().sd(),String(MENU_BIN), 2000, &SdFatSPIConfig);
 #endif
 
     // Re-mount by SdFat
