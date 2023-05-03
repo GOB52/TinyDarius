@@ -23,11 +23,16 @@ M5Stack Faces + GB Face
 各環境の整備方法などはそれぞれのページを参照してくだい。  
 
 ### 必要なライブラリ
-[M5Stack](https://github.com/m5stack/M5Stack) 0.4.0  
-[LovyanGFX](https://github.com/lovyan03/LovyanGFX) 0.4.17 (support v0,v1)  
-[SdFat](https://github.com/greiman/SdFat) 2.1.2  
-[goblib](https://github.com/GOB52/goblib) 0.1.0  
-[goblib_m5s](https://github.com/GOB52/goblib_m5s) 0.1.0
+* 排他(どちらかを使ってください)  
+[M5Stack](https://github.com/m5stack/M5Stack) 0.4.3  
+[LovyanGFX](https://github.com/lovyan03/LovyanGFX) 1.1.16  
+or  
+[M5Unified](https://github.com/m5stack/M5Unified) 0.1.6 (M5GFX を含む)
+
+* 共通  
+[SdFat](https://github.com/greiman/SdFat) 2.2.2  
+[goblib](https://github.com/GOB52/goblib) 0.2.0  
+[goblib_m5s](https://github.com/GOB52/goblib_m5s) 0.3.0
 
 ### platform.ini for PlatformIO
 
