@@ -109,10 +109,12 @@ void TinyDarius::setup(LGFX* output)
         {
             abort();
         }
-        //#if __has_include("df88.cpp")
+#if __has_include("df88.cpp")
         p->setFont(&df88_gfx_font);
-        //#endif
-        //        p->setFont(&Font2);
+#else
+        p->setFont(&Font0);
+#endif
+
         p->setAddrWindow(0, 0, SCREEN_WIDTH, STRIP_HEIGHT);
     }
 
