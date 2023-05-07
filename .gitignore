@@ -39,4 +39,4 @@
 .vscode/ipch
 
 # Resource
-/src/df88.*
+/src/df88.cpp
