@@ -6,7 +6,7 @@
 */
 #ifndef NDEBUG
 
-#include <LovyanGFX.hpp>
+#include "../lgfx.hpp"
 #include "scene_debug_sound.hpp"
 #include "../renderer.hpp"
 #include "../app.hpp"
@@ -14,7 +14,6 @@
 #include <gob_m5s_faces.hpp>
 using goblib::m5s::FaceGB;
 #include <lgfx/gob_lgfx.hpp>
-using goblib::lgfx::GSprite;
 #include <gob_utility.hpp>
 
 namespace
@@ -137,7 +136,7 @@ void SceneDebugSound::onExecuteReturn()
 void SceneDebugSound::render(void* arg)
 {
     RenderArg* rarg = static_cast<RenderArg*>(arg);
-    GSprite* sprite = rarg->sprite;
+    LGFX_Sprite* sprite = rarg->sprite;
     SoundSystem& ss = SoundSystem::instance();
 
     sprite->setTextColor(TFT_WHITE, TFT_BLACK);

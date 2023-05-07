@@ -11,7 +11,7 @@
 #include <gob_macro.hpp>
 
 #define TD_VERSION_MAJOR 0
-#define TD_VERSION_MINOR 1
+#define TD_VERSION_MINOR 2
 #define TD_VERSION_PATCH 0
 
 /*! @def TD_VERSION_VALUE

@@ -12,7 +12,7 @@
 #include "../game_obj.hpp"
 
 namespace goblib { namespace lgfx {
-class GSprite4;
+class LGFX_Sprite4;
 class AnimatedPalette;
 }}
 
@@ -38,7 +38,7 @@ class BranchRock : public GameObj
     virtual void onExecute(const float delta) override;
 
   protected:
-    goblib::lgfx::GSprite4* _sprite;
+    goblib::lgfx::LGFX_Sprite4* _sprite;
     goblib::lgfx::AnimatedPalette* _apalette;
 };
 

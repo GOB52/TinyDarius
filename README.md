@@ -26,11 +26,16 @@ You can build on [ArduinoIDE](https://www.arduino.cc/en/software) or [PlatformIO
 Please refer to the respective Webpage for instructions on how to build each environment.  
 
 ### Require
-[M5Stack](https://github.com/m5stack/M5Stack) 0.4.0  
-[LovyanGFX](https://github.com/lovyan03/LovyanGFX) 0.4.17 (support v0,v1)  
-[SdFat](https://github.com/greiman/SdFat) 2.1.2  
-[goblib](https://github.com/GOB52/goblib) 0.1.0  
-[goblib_m5s](https://github.com/GOB52/goblib_m5s) 0.1.0
+* Exclusive  
+[M5Stack](https://github.com/m5stack/M5Stack) 0.4.3  
+[LovyanGFX](https://github.com/lovyan03/LovyanGFX) 1.1.16  
+or   
+[M5Unified](https://github.com/m5stack/M5Unified) 0.1.6 (include M5GFX)
+
+* Common  
+[SdFat](https://github.com/greiman/SdFat) 2.2.2  
+[goblib](https://github.com/GOB52/goblib) 0.2.0  
+[goblib_m5s](https://github.com/GOB52/goblib_m5s) 0.3.0
 
 ### platform.ini for PlatformIO
 
@@ -45,17 +50,10 @@ Please refer to the respective Webpage for instructions on how to build each env
 
 |env|description|remarks|
 |:---|:---|:---|
-|master|Master build with LovyanGFX v0| No debugging features|
-|master\_v1|Master build with LovyanGFX v1| No debugging features|
-|release|Release build with LovyanGFX v0| Debugging features available|
-|release\_v1|Release build with LovyanGFX v1| Debugging features available|
-|debug|Debug build with LovyanGFX v0|Debugging features available|
-|debug|Debug build with LovyanGFX v1|Debugging features available|
-
-Recommend building with master or master\_v1  
-I shared libraries between ArduinoIDE and PlatformIO, so use [lib\_extra\_dirs](https://docs.platformio.org/en/latest/projectconf/section_env_library.html#lib-extra-dirs) and installed libraries (exclude M5Stack) by ArduinoIDE.  
-Please edit platform.ini according to your environment.
-
+|master|Master build with LovyanGFX| No debugging features|
+|master\_M5GFX|Master build with M5Unified| No debugging features|
+|release|Release build with LovyanGFX| Debugging features available|
+|release\_M5GFX|Release build with M5Unified| Debugging features available|
 
 ### TinyDarius.ino for ArduinoIDE
 
@@ -63,21 +61,6 @@ TinyDarius.ino is empty file. setup() and loop() in ./src/main.cpp.
 The build will be equivalent to release in platform.ini.  
 If you want to change building env,then you need edit platform.txt   
 Please refer to the env description to set the options.
-
-
-#### Settings
-
-BoardManager **M5Stack version 1.0.9**  
-
-[Menu] - [Tool]  
-
-|Menu|Settings|
-|:---|:---|
-|Board|M5Stack-Core-ESP32|
-|Flash Frequency|80|
-|Flash Mode|QIO|
-|Partation Scheme|Default|
-|Core Debug|any |
 
 ## How to play
 
@@ -104,6 +87,9 @@ BoardManager **M5Stack version 1.0.9**
 - Add more SFX.
 - Save/load  score ranking.
 - Add missile and power up for ship... hmm, May or may not be implemented.
+
+It will be rewritten to be based on the gob_tilemap that is being created.  
+Please be patient.
 
 
 ## Special thanks

@@ -4,19 +4,24 @@
   @file app.cpp
   @brief Application class
 */
-#include <M5Stack.h>
-#ifdef min
-#undef min
+#if __has_include(<M5Unified.h>)
+# include <SdFat.h>
+# include <M5Unified.h>
+#else
+# include <M5stack.h>
+# ifdef min
+#   undef min
+# endif
 #endif
-#include <LovyanGFX.hpp>
 
+#include "lgfx.hpp"
 #include "debug.hpp"
 #include "app.hpp"
 #include "game.hpp"
 #include "constants.hpp"
-#if __has_include("df88.cpp")
+
 #include "df88.hpp"
-#endif
+
 #include "renderer.hpp"
 #include "sound.hpp"
 #include "game_obj.hpp"
@@ -44,7 +49,6 @@ using goblib::m5s::CpuUsage;
 #include <cassert>
 
 using goblib::m5s::FaceGB;
-using goblib::lgfx::GSprite;
 
 namespace
 {
@@ -77,7 +81,11 @@ TinyDarius::~TinyDarius()
     finalize();
 }
 
+#ifdef M5UNIFIED_VERSION
+void TinyDarius::setup(M5GFX* output)
+#else
 void TinyDarius::setup(LGFX* output)
+#endif
 {
     assert(output);
 
@@ -85,7 +93,7 @@ void TinyDarius::setup(LGFX* output)
 
     _output->init();
     _output->setRotation(1);
-    _output->setBrightness(80);
+    _output->setBrightness(48);
 
     _output->fillScreen(TFT_WHITE);
     
@@ -94,19 +102,24 @@ void TinyDarius::setup(LGFX* output)
 
     for(auto& p : _sprite)
     {
-        p = new GSprite();
+        p = new LGFX_Sprite();
         assert(p);
         p->setColorDepth(_output->getColorDepth());
         if(!p->createSprite(SCREEN_WIDTH, STRIP_HEIGHT))
         {
             abort();
         }
-#if __has_include("df88.cpp")
+        //#if __has_include("df88.cpp")
         p->setFont(&df88_gfx_font);
-#endif
+        //#endif
+        //        p->setFont(&Font2);
         p->setAddrWindow(0, 0, SCREEN_WIDTH, STRIP_HEIGHT);
     }
 
+    printf("sp:%p\n", _sprite[0]);
+    printf("sp:%p\n", _sprite[1]);
+
+    
     // Occupy the bus.
     _output->startWrite();
     _output->setAddrWindow(0, 0, _output->width(), _output->height());
@@ -228,7 +241,7 @@ void TinyDarius::printDebugInformation() const
     GameObj::print();
 }
 
-void TinyDarius::drawDebugInformation(GSprite* spr) const
+void TinyDarius::drawDebugInformation(LGFX_Sprite* spr) const
 {
     //    GOBLIB_SCOPED_LEAK_ABORT();
 

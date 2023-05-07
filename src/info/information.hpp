@@ -11,7 +11,7 @@
 #include "../game_obj.hpp"
 
 namespace goblib { namespace lgfx {
-class GSprite4;
+class LGFX_Sprite4;
 }}
 
 class Information : public GameObj
@@ -30,7 +30,7 @@ class Information : public GameObj
     virtual void onExecute(const float delta) override;
 
   private:
-    goblib::lgfx::GSprite4* _sprite;
+    goblib::lgfx::LGFX_Sprite4* _sprite;
 
 };
 

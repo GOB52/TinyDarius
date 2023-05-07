@@ -4,8 +4,7 @@
   @file silver_hawk.cpp
   @brief My ship
 */
-#include <LovyanGFX.hpp>
-
+#include "../lgfx.hpp"
 #include "silver_hawk.hpp"
 #include "../debug.hpp"
 #include "../app.hpp"
@@ -19,8 +18,7 @@
 using goblib::suffix::operator"" _u8;
 #include <gob_easing.hpp>
 #include <lgfx/gob_lgfx_sprite.hpp>
-using goblib::lgfx::GSprite;
-using goblib::lgfx::GSprite4;
+using goblib::lgfx::LGFX_Sprite4;
 #include <gob_m5s_faces.hpp>
 using goblib::m5s::FaceGB;
 
@@ -174,7 +172,7 @@ void SilverHawk::onDead(const float delta)
 void SilverHawk::render(void* arg)
 {
     RenderArg* rarg = static_cast<RenderArg*>(arg);
-    GSprite* target = rarg->sprite;
+    LGFX_Sprite* target = rarg->sprite;
     std::int16_t xx = static_cast<std::int16_t>(x());
     std::int16_t yy = static_cast<std::int16_t>(y());
 
@@ -268,7 +266,7 @@ void SilverHawk::Bullet::onExecute(const float delta)
 void SilverHawk::Bullet::render(void* arg)
 {
     RenderArg* rarg = static_cast<RenderArg*>(arg);
-    GSprite* target = rarg->sprite;
+    LGFX_Sprite* target = rarg->sprite;
 
     _sh._sprite->pushCellTo16(target, BULLET_RECT, static_cast<std::int16_t>(x()), static_cast<std::int16_t>(y()) + rarg->yorigin, 0);
     GameObj::render(arg);

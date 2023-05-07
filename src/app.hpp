@@ -15,12 +15,6 @@
 #include <gob_m5s_clock.hpp>
 #include <lgfx/gob_lgfx.hpp>
 
-#ifdef LGFX_USE_V1
-#include <lgfx/v1_autodetect/LGFX_AutoDetect_ESP32.hpp>
-#else
-class LGFX;
-#endif
-
 namespace goblib
 {
 class Task;
@@ -54,7 +48,11 @@ class TinyDarius : public goblib::App<AppClock, APP_FPS, APP_FPS>, goblib::Singl
 
     virtual ~TinyDarius();
 
+#if __has_include(<M5Unified.h>)
+    void setup(M5GFX* output);
+#else
     void setup(LGFX* output);
+#endif
     void finalize();
     
     virtual void fixedUpdate() override;
@@ -105,12 +103,16 @@ class TinyDarius : public goblib::App<AppClock, APP_FPS, APP_FPS>, goblib::Singl
   private:
 #ifndef NDEBUG
     void printDebugInformation() const;
-    void drawDebugInformation(goblib::lgfx::GSprite* spr) const;
+    void drawDebugInformation(LGFX_Sprite* spr) const;
 #endif
     
   private:
+#if __has_include (<M5Unified.h>)
+    M5GFX* _output;
+#else
     LGFX* _output;
-    std::array<goblib::lgfx::GSprite*,2> _sprite; // for translate by DMA.
+#endif
+    std::array<LGFX_Sprite*,2> _sprite; // for translate by DMA.
     TdTaskTree* _taskTree;
     goblib::SceneManageTask* _sceneManager;
     goblib::graph::Renderer2D* _renderer;

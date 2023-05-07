@@ -4,8 +4,7 @@
   @file king_fossil.cpp
   @brief Coelacanth
 */
-#include <LovyanGFX.hpp>
-
+#include "../lgfx.hpp"
 #include "king_fossil.hpp"
 #include "../debug.hpp"
 #include "../app.hpp"
@@ -15,7 +14,6 @@
 #include "../effect/explosion.hpp"
 
 #include <lgfx/gob_lgfx_sprite.hpp>
-using goblib::lgfx::GSprite;
 using goblib::lgfx::GCellSprite4;
 #include <lgfx/gob_lgfx_animated_palette.hpp>
 #include <gob_utility.hpp>

@@ -23,11 +23,16 @@ M5Stack Faces + GB Face
 各環境の整備方法などはそれぞれのページを参照してくだい。  
 
 ### 必要なライブラリ
-[M5Stack](https://github.com/m5stack/M5Stack) 0.4.0  
-[LovyanGFX](https://github.com/lovyan03/LovyanGFX) 0.4.17 (support v0,v1)  
-[SdFat](https://github.com/greiman/SdFat) 2.1.2  
-[goblib](https://github.com/GOB52/goblib) 0.1.0  
-[goblib_m5s](https://github.com/GOB52/goblib_m5s) 0.1.0
+* 排他(どちらかを使ってください)  
+[M5Stack](https://github.com/m5stack/M5Stack) 0.4.3  
+[LovyanGFX](https://github.com/lovyan03/LovyanGFX) 1.1.16  
+or  
+[M5Unified](https://github.com/m5stack/M5Unified) 0.1.6 (M5GFX を含む)
+
+* 共通  
+[SdFat](https://github.com/greiman/SdFat) 2.2.2  
+[goblib](https://github.com/GOB52/goblib) 0.2.0  
+[goblib_m5s](https://github.com/GOB52/goblib_m5s) 0.3.0
 
 ### platform.ini for PlatformIO
 
@@ -43,16 +48,10 @@ M5Stack Faces + GB Face
 
 |env|説明|備考|
 |:---|:---|:---|
-|master|マスタービルド (LovyanGFX v0)|デバッグ機能なし|
-|master\_v1|マスタービルド (LovyanGFX v1)|デバッグ機能なし|
-|release|リリースビルド (LovyanGFX v0)|デバッグ機能あり|
-|release\_v1|リリースビルド (LovyanGFX v1)|デバッグ機能あり|
-|debug|デバッグビルド (LovyanGFX v0)|デバッグ機能あり|
-|debug|デバッグビルド (LovyanGFX v1)|デバッグ機能あり|
-
-master または master\_v1 でのビルドを推奨します。  
-私は ArduinoIDE と PlatformIO で M5Stack を除くライブラリを [lib\_extra\_dirs](https://docs.platformio.org/en/latest/projectconf/section_env_library.html#lib-extra-dirs) を介して共有使用しています。(ライブラリのインストールは ArduinoIDE を使用)  
-ご自分の環境に合わせて platform.ini を書き換えてください。  
+|master|マスタービルド (LovyanGFX)|デバッグ機能なし|
+|master\_M5GFX|マスタービルド (M5Unified)|デバッグ機能なし|
+|release|リリースビルド (LovyanGFX)|デバッグ機能あり|
+|release\_M5GFX|リリースビルド (M5Unified)|デバッグ機能あり|
 
 ### TinyDarius.ino for ArduinoIDE
 
@@ -60,21 +59,6 @@ TinyDarius.ino 自体は空のファイルです。 setup(),loop() は ./src/mai
 ビルドは platform.ini の release 相当のものとなります。  
 他の env 相当でのビルドにするには platform.txt を書き換える必要があります。  
 env の記述を参考にオプションを設定してください。
-
-#### 設定
-
-ボードマネージャー **M5Stack version 1.0.9**  
-
-[Menu] - [Tool]  
-
-|項目|設定値|
-|:---|:---|
-|Board|M5Stack-Core-ESP32|
-|Flash Frequency|80|
-|Flash Mode|QIO|
-|Partation Scheme|Default|
-|Core Debug|any |
-
 
 ## 遊び方
 
@@ -98,6 +82,9 @@ env の記述を参考にオプションを設定してください。
 - 効果音の追加
 - スコアランキングの保存と読み込み
 - 自機のミサイルとパワーアップは...作るかもしれないし、しないかも。
+
+製作中の gob_tilemap ベースに書き換える方向でいます。気長にお待ちください(´･ω･`)
+
 
 ## 謝辞
 **[@KojiSaito](https://twitter.com/kojisaito)** M5Stack 向けプログラミングをしているのを見て私も M5Stack を買ってしまいました。M5Stack への道を開いてくれたことに感謝します。  

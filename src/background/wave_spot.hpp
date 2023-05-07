@@ -11,7 +11,7 @@
 #include "../game_obj.hpp"
 
 namespace goblib { namespace lgfx {
-class GSprite4;
+class LGFX_Sprite4;
 class AnimatedPalette;
 }}
 
@@ -35,7 +35,7 @@ class WaveSpot : public GameObj
 
   private:
     enum { Sprite_0, Sprite_1, SpriteMax };
-    goblib::lgfx::GSprite4* _sprites;
+    goblib::lgfx::LGFX_Sprite4* _sprites;
     goblib::lgfx::AnimatedPalette* _apalette;
     std::array<RGBColor,16> _opalettes; // original palette colors.
 };

@@ -4,8 +4,7 @@
   @file message.cpp
   @brief Display message
 */
-#include <LovyanGFX.hpp>
-
+#include "../lgfx.hpp"
 #include "message.hpp"
 #include "../debug.hpp"
 #include "../renderer.hpp"
@@ -14,9 +13,8 @@
 #include "../df88.hpp"
 #endif
 #include <lgfx/gob_lgfx.hpp>
-using goblib::lgfx::GSprite;
 #include <lgfx/gob_lgfx_sprite.hpp>
-using goblib::lgfx::GSprite4;
+using goblib::lgfx::LGFX_Sprite4;
 #include <cstring>
 #include <cctype>
 #include <algorithm>
@@ -85,7 +83,7 @@ void CenteringMessage::onExecute(const float delta)
 void CenteringMessage::render(void* arg)
 {
     RenderArg* rarg = static_cast<RenderArg*>(arg);
-    GSprite* target = rarg->sprite;
+    LGFX_Sprite* target = rarg->sprite;
 
     auto old = target->getTextDatum();
     //    target->setTextDatum(textdatum_t::middle_center);
@@ -111,7 +109,7 @@ BlinkingMessage::BlinkingMessage(const char* source, std::int16_t sy, std::uint3
     std::strncpy(_buffer, source, sizeof(_buffer));
     _buffer[sizeof(_buffer)-1] = '\0';
 
-    _sprite = new GSprite4(std::strlen(_buffer)*16, 16);
+    _sprite = new LGFX_Sprite4(std::strlen(_buffer)*16, 16);
     assert(_sprite);
 #if __has_include("../df88.cpp")
     _sprite->setFont(&df88_gfx_font);
@@ -159,7 +157,7 @@ void BlinkingMessage::onExecute(const float delta)
 void BlinkingMessage::render(void* arg)
 {
     RenderArg* rarg = static_cast<RenderArg*>(arg);
-    GSprite* target = rarg->sprite;
+    LGFX_Sprite* target = rarg->sprite;
 
     /*
       auto old = target->getTextDatum();
@@ -224,7 +222,7 @@ void RemainBonusMessage::onExecute(const float delta)
 void RemainBonusMessage::render(void* arg)
 {
     RenderArg* rarg = static_cast<RenderArg*>(arg);
-    GSprite* target = rarg->sprite;
+    LGFX_Sprite* target = rarg->sprite;
 
     auto old = target->getTextDatum();
     target->setTextDatum(textdatum_t::middle_center);

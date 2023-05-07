@@ -4,14 +4,12 @@
   @file block_mask.cpp
   @brief Mask by block
 */
-#include <LovyanGFX.hpp>
-
+#include "../lgfx.hpp"
 #include "block_mask.hpp"
 #include "../debug.hpp"
 #include "../renderer.hpp"
 #include "../constants.hpp"
 #include <lgfx/gob_lgfx.hpp>
-using goblib::lgfx::GSprite;
 
 namespace
 {
@@ -84,7 +82,7 @@ void BlockMask::onExecute(const float delta)
 void BlockMask::render(void* arg)
 {
     RenderArg* rarg = static_cast<RenderArg*>(arg);
-    GSprite* target = rarg->sprite;
+    LGFX_Sprite* target = rarg->sprite;
     ScopedClip(*target, FIELD_RECT, rarg->yorigin);
 
     for(std::int32_t y = 0; y < FIELD_RECT.height(); y += BLOCK_HEIGHT)
@@ -96,7 +94,7 @@ void BlockMask::render(void* arg)
     }
 }
 
-void BlockMask::fill(GSprite* sprite, const std::int32_t x, const std::int32_t y, const std::uint32_t step)
+void BlockMask::fill(LGFX_Sprite* sprite, const std::int32_t x, const std::int32_t y, const std::uint32_t step)
 {
     if(step >=16) { return; }
 

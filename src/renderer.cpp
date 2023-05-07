@@ -4,12 +4,11 @@
   @file renderer.cpp
   @brief utility for rendering
 */
-#include <LovyanGFX.hpp>
+#include "lgfx.hpp"
 #include "renderer.hpp"
 #include <lgfx/gob_lgfx.hpp>
-using goblib::lgfx::GSprite;
 
-ScopedClip::ScopedClip(GSprite& target, const Rect2& clip, const std::int32_t yorigin)
+ScopedClip::ScopedClip(LGFX_Sprite& target, const Rect2& clip, const std::int32_t yorigin)
         : _sprite(target), _rect()
 {
     std::int32_t x,y,w,h;

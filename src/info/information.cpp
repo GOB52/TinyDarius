@@ -4,8 +4,7 @@
   @file information.cpp
   @brief Information on play
 */
-#include <LovyanGFX.hpp>
-
+#include "../lgfx.hpp"
 #include "information.hpp"
 #include "../debug.hpp"
 #include "../app.hpp"
@@ -16,8 +15,7 @@
 #include "../constants.hpp"
 
 #include <lgfx/gob_lgfx_sprite.hpp>
-using goblib::lgfx::GSprite;
-using goblib::lgfx::GSprite4;
+using goblib::lgfx::LGFX_Sprite4;
 #include <gob_utility.hpp>
 
 #include <cmath> // std::log10
@@ -38,7 +36,7 @@ Information::Information()
         : GameObj(PRIORITY_INFORMATION, ORDER_INFORMATION, CATEGORY_NONE, "information")
         , _sprite(nullptr)
 {
-    _sprite = new GSprite4();
+    _sprite = new LGFX_Sprite4();
     assert(_sprite);
 }
 
@@ -81,7 +79,7 @@ void Information::render(void* arg)
     Game& game = TinyDarius::instance().game();
     
     RenderArg* rarg = static_cast<RenderArg*>(arg);
-    GSprite* target = rarg->sprite;
+    LGFX_Sprite* target = rarg->sprite;
     _sprite->pushSpriteTo16(target, ZONE_POS.x(), ZONE_POS.y() + rarg->yorigin);
 
     target->setTextColor(CLR_WHITE, CLR_BLACK);

@@ -4,13 +4,12 @@
   @file game_obj.cpp
   @brief Game object
 */
-#include <LovyanGFX.hpp>
+#include "lgfx.hpp"
 #include "game_obj.hpp"
 #include "app.hpp"
 #include "renderer.hpp"
 #include "constants.hpp"
 #include <lgfx/gob_lgfx.hpp>
-using goblib::lgfx::GSprite;
 
 #include <cstdio>
 
